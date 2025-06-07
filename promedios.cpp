@@ -1,17 +1,23 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 
+// Estructura de datos para almacenar la información de cada estudiante
 struct Alumno {
-    string nombreCompleto;
+    string nombre;
+    string apellido1;
+    string apellido2;
     int edad;
     char genero; // M o F
     float nota;
+    string nombreCompleto() const {
+        return nombre + " " + apellido1 + " " + apellido2;
+    }
 };
 
-// Constantes
+// Constante para definir la nota mínima aprobatoria
 const float NOTA_MINIMA = 70.0;
 
 // Validaciones
@@ -39,8 +45,14 @@ int main() {
         Alumno alumno;
         cout << "\n--- Ingreso de datos del estudiante #" << i + 1 << " ---\n";
 
-        cout << "Nombre completo: ";
-        getline(cin, alumno.nombreCompleto);
+        cout << "Nombre: ";
+        cin >> alumno.nombre;
+
+        cout << "Primer apellido: ";
+        cin >> alumno.apellido1;
+
+        cout << "Segundo apellido: ";
+        cin >> alumno.apellido2;
 
         cout << "Edad: ";
         cin >> alumno.edad;
@@ -53,8 +65,8 @@ int main() {
         cin.ignore(); // Limpiar salto de línea pendiente
 
         // Validaciones
-        if (!nombreValido(alumno.nombreCompleto)) {
-            cout << "\033[33m❌ Nombre inválido. Registro omitido.\033[0m\n";
+        if (!nombreValido(alumno.nombre) || !nombreValido(alumno.apellido1) || !nombreValido(alumno.apellido2)) {
+            cout << "\033[33m❌ Nombre o apellidos inválidos. Registro omitido.\033[0m\n";
             continue;
         }
         if (!generoValido(alumno.genero)) {
@@ -74,20 +86,25 @@ int main() {
         }
     }
 
-    // Resultados
+    // Mostrar resultados
     cout << "\n\033[34m=============================\n";
     cout << "📘 ESTUDIANTES APROBADOS (" << aprobados.size() << ")\n";
     cout << "=============================\033[0m\n";
     for (const auto& a : aprobados) {
-        cout << "\033[32m✅ " << a.nombreCompleto << " - Nota: " << a.nota << "\033[0m\n";
+        cout << "\033[32m✅ " << a.nombreCompleto() << " - Nota: " << a.nota << "\033[0m\n";
     }
 
     cout << "\n\033[34m=============================\n";
     cout << "📕 ESTUDIANTES REPROBADOS (" << reprobados.size() << ")\n";
     cout << "=============================\033[0m\n";
     for (const auto& r : reprobados) {
-        cout << "\033[31m❌ " << r.nombreCompleto << " - Nota: " << r.nota << "\033[0m\n";
+        cout << "\033[31m❌ " << r.nombreCompleto() << " - Nota: " << r.nota << "\033[0m\n";
     }
 
     return 0;
 }
+
+  
+
+
+
