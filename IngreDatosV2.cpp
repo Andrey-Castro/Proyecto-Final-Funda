@@ -1,26 +1,24 @@
-#include <iostream>  // No hace falta explicar...
-#include <string>    // Importante cuando se quiere trabajar con strings o caracteres tipo cadena.
-#include <vector>    // Le dice al programa que va a utilizar vectores.
-#include <algorithm> // Usa funciones estandar, ordena,buscar,manipular datos.
+#include <iostream>  
+#include <string>    
+#include <vector>    
+#include <algorithm> 
 
 using namespace std;
 
-//Codigos de escape ANSI o lista de colores.
-#define Reset     "\033[0m"  // Vuelve al color por defecto.
-#define Bold      "\033[1m"  // Negrita.
-#define Underline "\033[4m"  // Subrayado.
-#define Red       "\033[31m" // Rojo, este es el color de las lineas que piden la informacion del alumno.
-#define Green     "\033[32m" // Verde, Color del marco del titulo (color de los * que rodean el titulo).
-#define Yellow    "\033[33m" // Amarillo, color del cuerpo del marco (color de los # del marco).
-#define Blue      "\033[34m" // Azul, color del texto del titulo. 
-#define Cyan      "\033[36m" // Cyan, color de la informacion mostrada del alumno.
+#define Reset     "\033[0m"  
+#define Bold      "\033[1m"  
+#define Underline "\033[4m"  
+#define Red       "\033[31m" 
+#define Green     "\033[32m" 
+#define Yellow    "\033[33m" 
+#define Blue      "\033[34m" 
+#define Cyan      "\033[36m" 
 
-// Esta parte del programa busca cumplir con el diseño del encabezado y seccion con estilos y colores.
-void Titulo_Marco(const string & titulo){           //El marco del titulo.
+void Titulo_Marco(const string & titulo){           
     size_t longitud = titulo.length();
     string borde(longitud + 4, '*');
 
-    cout << Green << borde << endl;                 //Caracteristicas, color, negrita, etc.
+    cout << Green << borde << endl;         
     cout << "* " << Blue << Bold << Underline << titulo << Reset << Green << " *" << endl;
     cout << borde << Reset << endl << endl;
 }
@@ -31,7 +29,7 @@ void Cuerpo_Marco(const vector<string>& lineas) {   // Cuerpo del encabezado
         maxLongitud = max(maxLongitud, linea.length());
     }
 
-    string borde(maxLongitud + 4, '#');             // caracteristicas, color, etc.
+    string borde(maxLongitud + 4, '#');
 
     cout << Yellow << borde << endl;
     for (const auto & linea : lineas) {
@@ -42,7 +40,6 @@ void Cuerpo_Marco(const vector<string>& lineas) {   // Cuerpo del encabezado
     cout << borde << Reset << endl;
 }
 
-//Esta parte del programa busca cumplir con el ingreso de los datos personales de estudiantes de forma exitosa.
 int main(){
 
     string nombre, apellido1, apellido2;
