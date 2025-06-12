@@ -5,14 +5,14 @@
 
 using namespace std;
 
-#define Reset     "\033[0m"  
-#define Bold      "\033[1m"  
-#define Underline "\033[4m"  
-#define Red       "\033[31m" 
-#define Green     "\033[32m" 
-#define Yellow    "\033[33m" 
-#define Blue      "\033[34m" 
-#define Cyan      "\033[36m" 
+#define Reset     "\033[0m"     
+#define Bold      "\033[1m"     
+#define Underline "\033[4m"    
+#define Red       "\033[31m"    
+#define Green     "\033[32m"    
+#define Yellow    "\033[33m"    
+#define Blue      "\033[34m"   
+#define Cyan      "\033[36m"  
 
 void Titulo_Marco(const string & titulo){           
     size_t longitud = titulo.length();
@@ -23,7 +23,7 @@ void Titulo_Marco(const string & titulo){
     cout << borde << Reset << endl << endl;
 }
 
-void Cuerpo_Marco(const vector<string>& lineas) {   // Cuerpo del encabezado
+void Cuerpo_Marco(const vector<string>& lineas) {  
     size_t maxLongitud = 0;
     for (const auto & linea : lineas) {
         maxLongitud = max(maxLongitud, linea.length());
