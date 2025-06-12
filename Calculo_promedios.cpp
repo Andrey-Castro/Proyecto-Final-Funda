@@ -43,6 +43,15 @@ void Cuerpo_Marco(const vector<string>& lineas) {
     }
     cout << borde << Reset << endl;
 }
+// Función para mostrar estado final del alumno en color
+void MostrarEstadoFinal(float promedio) {
+    if (promedio >= 70.0f) {
+        cout << Green << "Estado: Aprobado ✅" << Reset << endl;
+    } else {
+        cout << Red << "Estado: Reprobado ❌" << Reset << endl;
+    }
+}
+
 
 int main() {
     string nombre, apellido1, apellido2;
@@ -105,11 +114,16 @@ int main() {
 
     cout << Green << "El promedio final del alumno es: "
          << setprecision(2) << fixed << promedioFinal << Reset << endl;
+         
+         MostrarEstadoFinal(promedioFinal);
+
+
+
 
     cout << Green << "Gracias por usar el sistema." << Reset << endl;
     cout << Green << "Fin del programa." << Reset << endl;
     cout << endl;
-    
+
 
     return 0;
 }
